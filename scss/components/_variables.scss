@@ -1,0 +1,22 @@
+$primary: #ffcc01;
+$primary-light: lighten($primary, 18%);
+$white: #ffffff;
+$black: #000;
+$text-color: #1f373d;
+$section-background: #f6f5f4;
+$header-height: 5.4rem;
+$shrink-header-height: 4rem;
+$border-radius: 0.3rem;
+$btn-padding: 0.9rem 1.5rem;
+$section-margin: 8.9rem;
+$section-padding: 4rem;
+$shadow: 0px 10px 15px 0px rgb(29 31 36 / 10%);
+
+$breakpoints: (
+	xs: 0,
+	sm: 576px,
+	md: 768px,
+	lg: 992px,
+	xl: 1200px,
+	xxl: 1400px,
+);

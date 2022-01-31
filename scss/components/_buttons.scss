@@ -1,0 +1,36 @@
+@use '../components/variables' as *;
+@use '../components/mixins' as *;
+.btn {
+	padding: $btn-padding;
+	cursor: pointer;
+	transition: all 0.35s;
+	border-radius: $border-radius;
+	&-link {
+		background-color: transparent;
+		color: $text-color;
+		&:hover {
+			color: $primary;
+		}
+	}
+	&-outlined {
+		background-color: $primary;
+		border: 1px solid $primary;
+		&:hover {
+			background-color: transparent;
+			color: $primary;
+			font-weight: 600;
+		}
+	}
+	&-primary {
+		background-color: $primary;
+		&:hover {
+			background-color: $primary-light;
+		}
+	}
+	&-primary-light {
+		background-color: #fff;
+		&:hover {
+			background-color: $primary-light;
+		}
+	}
+}

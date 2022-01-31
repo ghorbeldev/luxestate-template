@@ -1,0 +1,16 @@
+@use './custom';
+@use './components/animations';
+@use './components/mixins';
+@use './components/variables';
+@use './components/buttons';
+
+// sections
+@use './sections/header';
+@use './sections/landing';
+@use './sections/about';
+@use './sections/appartments';
+@use './sections/how-it-works';
+@use './sections/services';
+@use './sections/add';
+@use './sections/agents';
+@use './sections/footer';
