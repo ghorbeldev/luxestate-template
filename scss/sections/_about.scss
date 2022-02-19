@@ -2,59 +2,94 @@
 @use '../components/mixins' as *;
 
 .about {
-	margin: $section-margin 0;
+	--gap: 50px;
+	padding: $section-padding 0;
+	background: $section-background;
 	.container {
 		@include flex(center, space-between);
-		@include breakpoint-down(lg) {
-			justify-content: center;
-			align-items: center;
-			flex-direction: column;
+		gap: var(--gap);
+		@include laptop {
+			flex-direction: column-reverse;
 		}
-		gap: 50px;
-		.about-intro {
-			width: calc(100% - 500px);
-			@include breakpoint-down(lg) {
-				width: 500px;
-			}
-			max-width: 100%;
+	}
+	&__image {
+		@include flex();
+		@include mobile {
+			display: none;
 		}
-		.statistics {
-			--gap: 20px;
-			@include flex(unset, space-between, wrap);
-			align-content: space-between;
-			width: 420px;
-			height: 420px;
-			@include breakpoint-down(lg) {
-				width: 500px;
-				height: 500px;
-			}
-			@include breakpoint-down(sm) {
+	}
+	&__content {
+		display: grid;
+		grid-template-columns: repeat(2, 260px);
+		gap: var(--gap);
+		@include laptop {
+			grid-template-columns: repeat(2, minmax(240px, 300px));
+		}
+		@include mobile {
+			grid-template-columns: 320px;
+		}
+		.box {
+			position: relative;
+			overflow: hidden;
+			&::after {
+				content: '';
+				position: absolute;
+				background-color: rgba($text-color, 0.1);
 				width: 100%;
-				height: auto;
-				justify-content: center;
+				height: 100%;
+				bottom: -25%;
+				left: -25%;
+				border-radius: 50%;
+				transition: all 425ms ease-in-out;
+				transform: scale(0);
+				transform-origin: left bottom;
 			}
-			.box {
-				@include flex(center, center);
-				flex-direction: column;
-				width: calc(50% - (var(--gap) / 2));
-				height: calc(50% - (var(--gap) / 2));
-				@include breakpoint-down(sm) {
-					width: 280px;
-					height: 280px;
-					margin-top: calc(var(--gap) * 2);
+			&:hover::after {
+				transform: scale(1.5);
+				// border-radius: 0;
+			}
+			&:first-of-type {
+				transform: translateX(var(--gap));
+			}
+			&:nth-of-type(2) {
+				transform: translate(var(--gap), var(--gap));
+			}
+			&:nth-of-type(4) {
+				transform: translateY(var(--gap));
+			}
+			@include large {
+				&:first-of-type {
+					transform: translateX(0);
 				}
-				background-color: $section-background;
-				h4 {
-					color: $primary;
-					font-size: 2.8rem;
-					margin-bottom: 20px;
-					font-weight: 600;
+				&:nth-of-type(2) {
+					transform: translate(0);
 				}
-				span {
-					color: $text-color;
-					font-size: 1rem;
-					font-weight: 500;
+				&:nth-of-type(4) {
+					transform: translateY(0);
 				}
+				transform: translate(0, 0);
+			}
+			@include flex();
+			flex-direction: column;
+			text-align: center;
+			box-shadow: $shadow;
+			padding: 1.5rem;
+			padding-top: 0;
+			border-radius: 0.5rem;
+			&__image {
+				margin-top: 3rem;
+			}
+			h4 {
+				color: $text-color;
+				font-weight: 700;
+				font-size: 1rem;
+				margin: 1.5rem 0;
+			}
+			p {
+				line-height: 1.8;
+				color: $text-color-light;
+				font-size: 0.98rem;
+				font-weight: 500;
 			}
 		}
 	}

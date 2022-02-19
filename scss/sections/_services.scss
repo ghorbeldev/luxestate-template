@@ -1,37 +1,104 @@
-@use '../components/mixins' as *;
 @use '../components/variables' as *;
+@use '../components/mixins' as *;
+
 .services {
-	margin: $section-margin 0;
-	&-section {
-		@include flex(center, center);
-		gap: 6rem;
-		@include breakpoint-down(md) {
+	padding: $section-padding 0;
+	--gap: 100px;
+	.container {
+		@include flex(center, space-between);
+		gap: var(--gap);
+		@include laptop {
 			flex-direction: column;
 		}
-		&__image {
-			background-image: url(https://source.unsplash.com/650x630/?Apartment);
-			background-size: cover;
-			align-self: stretch;
-			flex-basis: 50%;
-			@include breakpoint-down(md) {
-				flex-basis: unset;
-				width: 100%;
-				height: 400px;
+	}
+	&__info {
+		min-width: 500px;
+		text-align: end;
+		@include tablet {
+			max-width: 100%;
+		}
+		h2 {
+			margin-bottom: 3rem;
+			color: $text-color;
+			font-weight: 700;
+			font-size: 2rem;
+			@include tablet {
+				text-align: center;
 			}
 		}
-		&__content {
-			.box {
-				&:not(:last-child) {
-					margin-bottom: 3rem;
+		p {
+			text-align: start;
+			line-height: 1.8;
+			font-size: 1rem;
+			color: $text-color-light;
+			margin-bottom: 2rem;
+		}
+	}
+	&__menu {
+		@include flex();
+		flex-wrap: wrap;
+		gap: 20px;
+		&__item {
+			position: relative;
+			overflow: hidden;
+			box-shadow: $shadow;
+			&::after {
+				content: '';
+				position: absolute;
+				top: 0;
+				left: 0;
+				border-radius: 0.4rem;
+				width: 100%;
+				height: 100%;
+				transform: scaleX(0);
+				transform-origin: center left;
+				background-color: $primary;
+				z-index: -1;
+				transition: transform 550ms;
+			}
+			width: 100%;
+			@include flex(flex-start, flex-start);
+			padding: 1.25rem;
+			border-radius: 0.4rem;
+			.icon {
+				width: 4rem;
+				height: 4rem;
+				@include flex;
+				svg {
+					max-width: 100%;
 				}
-				max-width: 500px;
-				margin-right: auto;
-				margin-left: auto;
-				h3 {
+			}
+			.data {
+				margin-left: 2rem;
+				align-self: stretch;
+				@include flex;
+				h4 {
 					color: $text-color;
+					width: fit-content;
+					width: 100%;
+				}
+				p {
+					overflow: hidden;
+					height: 0;
+					width: 100%;
+					font-size: 1rem;
+					color: $white;
 					font-weight: 500;
-					margin-bottom: 1.5rem;
-					font-size: 1.5rem;
+					transition: all 0.3s;
+				}
+			}
+			&:hover {
+				&::after {
+					transform: scaleX(1);
+				}
+				.data {
+					flex-wrap: wrap;
+				}
+				h4 {
+					margin-bottom: 1rem;
+				}
+				p {
+					height: 4rem;
 				}
 			}
 		}

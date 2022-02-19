@@ -2,134 +2,33 @@
 @use '../components/mixins' as *;
 
 .footer {
-	padding: $section-padding 0;
 	background-color: $text-color;
-	.explore {
-		border-bottom: 1px solid #a2aeab;
-		padding-bottom: $section-padding;
+	.container {
 		@include flex(center, space-between);
+		padding: 1rem;
+		@include mobile {
+			flex-direction: column;
+		}
 		p {
 			color: $white;
-			font-size: 2.5rem;
-			line-height: 150%;
-			font-weight: 500;
-		}
-		.subscribe {
-			@include flex(center, space-between);
-			flex-basis: 50%;
-			position: relative;
-			max-width: 100%;
-			background-color: #fff;
-			input {
-				padding: 1.4rem;
-				font-size: 1.2rem;
-				width: calc(100% - 100px);
-				&::placeholder {
-					color: #a2aeab;
-					font-weight: 300;
-				}
-				&::-webkit-input-placeholder {
-					color: #a2aeab;
-					font-weight: 300;
-				}
-			}
-			button {
-				@include flex(center, center);
-				background-color: lighten($text-color, 80%);
-				align-self: stretch;
-				width: 100px;
-				cursor: pointer;
-				transition: all 0.3s;
-				color: $text-color;
-				&:hover {
-					background-color: $primary-light;
-				}
-				object {
-					transform: rotate(-90deg);
-					filter: hue-rotate(192deg) saturate(33%) brightness(18%);
-					cursor: pointer;
-				}
+			font-size: 0.8rem;
+			font-weight: 300;
+			@include mobile {
+				margin-bottom: 1rem;
 			}
 		}
-		@include breakpoint-down(lg) {
-			p {
-				font-size: 2rem;
-			}
-			.subscribe {
-				input {
-					font-size: 1rem;
-				}
-			}
-		}
-		@include breakpoint-down(md) {
-			& {
-				flex-direction: column;
-				align-items: flex-start;
-				p {
-					font-size: 1.8rem;
-					margin-bottom: 2rem;
-				}
-				.subscribe {
-					width: calc(100% - 2rem);
-					font-size: 0.9rem;
-					input {
-						width: calc(100% - 60px);
-						padding: 1rem;
-					}
-					button {
-						width: 60px;
-						object {
-							width: 0.6rem;
-						}
-					}
-				}
-			}
-		}
-	}
-
-	&__content {
-		@include flex(center, space-between, wrap);
-		padding: 3.5rem 1.5rem 0;
-		align-items: stretch;
-		.right {
-			h4 {
+		.social {
+			@include flex;
+			a {
+				padding: 0 1rem;
 				color: $white;
-				font-size: 1.5rem;
-				margin-bottom: 3.5rem;
-				font-weight: 400;
-			}
-			p {
-				color: $white;
-				font-size: 0.89rem;
-				font-weight: 300;
-				line-height: 180%;
-				max-width: 15ch;
-			}
-		}
-		&__links {
-			@include grid(2rem, 100px, 150px, $xl: 4, $lg: 4, $md: 2, $sm: 2);
-			justify-content: space-between;
-			@include breakpoint-down(lg) {
-				margin-top: 3.5rem;
-				width: 100%;
-			}
-			&__list {
-				h3 {
-					color: white;
-					font-weight: 200;
-					font-size: 0.9rem;
-					letter-spacing: 1px;
-					opacity: 0.7;
-					margin-bottom: 3rem;
-				}
-				ul {
-					li {
-						margin-bottom: 1rem;
-						a {
-							color: #fff;
-							font-weight: 300;
-							font-size: 0.9rem;
-						}
+				svg {
+					fill: $white;
+					width: 1.7rem;
+					height: 1.7rem;
+					@include mobile {
+						width: 1rem;
+						height: 1rem;
 					}
 				}
 			}

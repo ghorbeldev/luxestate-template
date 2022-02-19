@@ -5,12 +5,11 @@
 @use './components/buttons';
 
 // sections
-@use './sections/header';
-@use './sections/landing';
-@use './sections/about';
-@use './sections/appartments';
-@use './sections/how-it-works';
-@use './sections/services';
-@use './sections/add';
-@use './sections/agents';
-@use './sections/footer';
+@use '../scss/sections/header';
+@use '../scss/sections/landing';
+@use '../scss/sections/about';
+@use '../scss/sections/services';
+@use '../scss/sections/how_it_works';
+@use '../scss/sections/get_app';
+@use '../scss/sections/contact';
+@use '../scss/sections/footer';

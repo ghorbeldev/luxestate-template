@@ -1,0 +1,78 @@
+@use '../components/variables' as *;
+@use '../components/mixins' as *;
+
+.contact {
+	padding: $section-padding * 1.5 0;
+	.container {
+		.links {
+			gap: 25px;
+			display: grid;
+			justify-content: center;
+			grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+
+			@include tablet {
+				grid-template-columns: repeat(2, minmax(125px, 300px));
+			}
+			&__menu {
+				h5 {
+					color: $text-color;
+					font-size: 0.9rem;
+					font-weight: 700;
+					margin-bottom: 1.5rem;
+				}
+				&__items {
+					li {
+						font-size: 0.9rem;
+						padding: 0.4rem 0;
+						cursor: pointer;
+						font-weight: 400;
+						color: $text-color-light;
+						&:hover {
+							color: #dd4444;
+						}
+					}
+				}
+			}
+		}
+		.get-in-touch {
+			margin-top: 3rem;
+			h2 {
+				font-weight: 700;
+				color: $text-color;
+				font-size: 2rem;
+				text-align: center;
+				+ p {
+					color: $text-color-light;
+					text-align: center;
+					font-size: 0.9rem;
+					margin-top: 0.5rem;
+				}
+			}
+			form {
+				@include flex(stretch);
+				margin-top: 5rem;
+				@include mobile {
+					flex-wrap: wrap;
+					gap: 25px;
+				}
+				gap: 50px;
+				input {
+					background-color: #f6f7fb;
+					font-size: 1.25rem;
+					padding: 0.5rem;
+					width: 500px;
+					@include mobile {
+						width: 100%;
+					}
+				}
+				.btn {
+					border-radius: 0;
+					color: $text-color;
+					&:hover {
+						border-color: $text-color;
+					}
+				}
+			}
+		}
+	}
+}

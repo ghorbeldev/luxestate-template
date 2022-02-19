@@ -2,35 +2,46 @@
 @use '../components/mixins' as *;
 .btn {
 	padding: $btn-padding;
-	cursor: pointer;
-	transition: all 0.35s;
 	border-radius: $border-radius;
-	&-link {
-		background-color: transparent;
-		color: $text-color;
+	display: inline-block;
+	font-weight: 700;
+	cursor: pointer;
+	transition: 325ms;
+	&-contained {
+		background-color: $white;
+		color: $black;
 		&:hover {
-			color: $primary;
-		}
-	}
-	&-outlined {
-		background-color: $primary;
-		border: 1px solid $primary;
-		&:hover {
+			border: 1px solid $white;
 			background-color: transparent;
-			color: $primary;
-			font-weight: 600;
+			color: $white;
 		}
 	}
 	&-primary {
 		background-color: $primary;
+		color: $white;
 		&:hover {
-			background-color: $primary-light;
+			border: 1px solid $primary;
+			background-color: transparent;
+			color: $primary;
 		}
 	}
-	&-primary-light {
-		background-color: #fff;
+	&-outlined {
+		background-color: transparent;
+		color: $white;
+		border: 1px solid $white;
 		&:hover {
-			background-color: $primary-light;
+			background-color: lighten($black, 20%);
+			border-color: lighten($black, 20%);
+			color: $white;
 		}
+	}
+}
+.btn-group {
+	--gap: 1.5rem;
+	@include flex();
+	margin-left: calc(-1 * var(--gap));
+	margin-right: calc(-1 * var(--gap));
+	.btn {
+		margin: 0 calc(var(--gap) / 2);
 	}
 }

@@ -1,42 +1,27 @@
 @use './variables' as *;
-@use 'sass:map';
-@mixin breakpoint-down($breakpoint) {
-	@media (max-width: map.get($breakpoints , $breakpoint)) {
-		@content;
-	}
-}
-@mixin breakpoint-up($breakpoint) {
-	@media (min-width: map.get($breakpoints , $breakpoint)) {
-		@content;
-	}
-}
-@mixin flex($align-items: unset, $justify-content: unset, $wrap: unset) {
+
+@mixin flex($alignItems: center, $justifyContent: center) {
 	display: flex;
-	align-items: $align-items;
-	justify-content: $justify-content;
-	flex-wrap: $wrap;
+	align-items: $alignItems;
+	justify-content: $justifyContent;
 }
-@mixin grid(
-	$gap: 0,
-	$min-width: 300px,
-	$max-width: 380px,
-	$xl: 3,
-	$lg: 2,
-	$md: 1,
-	$sm: null
-) {
-	display: grid;
-	gap: $gap;
-	grid-template-columns: repeat($xl, minmax($min-width, $max-width));
-	@include breakpoint-down(lg) {
-		grid-template-columns: repeat($lg, minmax($min-width, $max-width));
+@mixin mobile {
+	@media (max-width: $mobile) {
+		@content;
 	}
-	@include breakpoint-down(md) {
-		grid-template-columns: repeat($md, minmax($min-width - 10px, $max-width));
+}
+@mixin tablet {
+	@media (max-width: $tablet) {
+		@content;
 	}
-	@if ($sm!=null) {
-		@include breakpoint-down(sm) {
-			grid-template-columns: repeat($sm, minmax($min-width - 10px, $max-width));
-		}
+}
+@mixin laptop {
+	@media (max-width: $laptop) {
+		@content;
+	}
+}
+@mixin large {
+	@media (max-width: $large) {
+		@content;
 	}
 }
