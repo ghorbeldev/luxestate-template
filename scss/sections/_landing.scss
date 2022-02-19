@@ -1,44 +1,130 @@
-@use '../components/variables' as *;
 @use '../components/mixins' as *;
-
+@use '../components/variables' as *;
 .landing {
-	min-height: 100vh;
-	position: relative;
-	padding-top: $header-height + 2;
-	background-image: url(../../images/Background.png);
-	background-size: cover;
-	color: $white;
-	&::after {
-		content: '';
-		position: absolute;
-		bottom: 0;
-		background-image: url(../../images/Background2.png);
-		background-size: cover;
-		width: 100%;
-		height: 250px;
-	}
+	height: 100vh;
+	width: 100%;
 	.container {
-		h1 {
-			text-align: center;
-			font-size: 2.8rem;
-			margin: 0 auto;
-			font-weight: 500;
-			max-width: 620px;
-			@include mobile {
-				font-size: 2rem;
+		padding-top: 120px;
+		position: relative;
+		height: 100%;
+		background-image: linear-gradient($white 18%, $white 18%),
+			url(../../images/hero.jpg);
+		background-size: 18%, cover;
+		background-repeat: no-repeat, repeat;
+		.intro {
+			max-width: 100%;
+			width: 34rem;
+			position: relative;
+			z-index: 1;
+			h1 {
+				color: $text-color;
+				font-size: 3.5rem;
+				font-weight: 600;
+				@include breakpoint-down(sm) {
+					font-size: 2.25rem;
+				}
 			}
-			+ p {
-				margin: 1.8rem 0;
-				text-align: center;
-				font-size: 1rem;
-				font-weight: 300;
+			.search {
+				@include flex(center);
+				position: absolute;
+				top: calc(100% + 120px);
+				transform: translateY(-50%);
+				width: fit-content;
+				box-shadow: $shadow;
+				padding-left: 0.9rem;
+				.btn {
+					border-top-left-radius: 0;
+					border-bottom-left-radius: 0;
+					font-size: 1rem;
+					font-weight: 500;
+					padding: {
+						top: 1.8rem;
+						bottom: 1.8rem;
+					}
+				}
+				input {
+					padding: $btn-padding;
+					padding: {
+						top: 1.8rem;
+						bottom: 1.8rem;
+						left: 2rem;
+					}
+					font-size: 1rem;
+					width: 300px;
+					&::placeholder {
+						color: #a2aeab;
+					}
+				}
+				i {
+					position: absolute;
+					left: 1rem;
+					color: #a2aeab;
+				}
+				@include breakpoint-down(sm) {
+					& {
+						top: calc(100% + 70px);
+						.btn {
+							padding: 1rem;
+						}
+						input {
+							width: 200px;
+							padding: 1rem;
+						}
+						i {
+							left: 0.5rem;
+						}
+					}
+				}
 			}
 		}
-		.image {
-			margin-top: 2.8rem;
+		.scroll-down {
+			@include flex(center);
+			gap: 1.2rem;
+			position: absolute;
+			writing-mode: sideways-lr;
+			cursor: pointer;
+			color: #919eb1;
+			transform: rotate(-90deg) translateY(-100%);
+			left: 0;
+			bottom: 65px;
 			text-align: center;
 			img {
-				object-fit: cover;
+				transform: rotate(90deg);
+			}
+		}
+		.info {
+			@include flex(center, center);
+			width: 500px;
+			max-width: 82%;
+			position: absolute;
+			bottom: 0;
+			right: 0;
+			background-color: $primary;
+			.box {
+				flex-basis: 50%;
+				padding: 1.25rem;
+				@include flex(center);
+				gap: 15px;
+				i {
+					color: $white;
+					font-size: 1.5rem;
+				}
+				p {
+					display: inline-block;
+					color: $text-color;
+					font-size: 1.2rem;
+				}
+			}
+			@include breakpoint-down(sm) {
+				& .box {
+					padding: 1rem;
+					i {
+						font-size: 1.25rem;
+					}
+					p {
+						font-size: 0.9rem;
+					}
+				}
 			}
 		}
 	}

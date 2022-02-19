@@ -1,6 +1,7 @@
 @use './components/variables' as *;
 @use './components/mixins' as *;
-
+// @forward './normalize';
+// add some reset styles
 *,
 *::after,
 *::before {
@@ -11,7 +12,6 @@
 *:not(i) {
 	font-family: 'Poppins', sans-serif;
 }
-
 html {
 	line-height: 1.15; /* 1 */
 	-webkit-text-size-adjust: 100%; /* 2 */
@@ -30,11 +30,23 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-	background: #888;
-	border-radius: 4px;
+	background: $primary;
+	border-radius: 10px;
 }
 ::-webkit-scrollbar-thumb:hover {
-	background: darken(#888, 10%);
+	background: $primary-light;
+}
+/* black background for the page */
+body.overlay::after {
+	content: '';
+	transition: all 0.5s;
+	position: fixed;
+	top: 0;
+	right: 0;
+	left: 0;
+	bottom: 0;
+	z-index: 999;
+	background-color: rgba($black, 0.4);
 }
 a {
 	text-decoration: none;
@@ -48,7 +60,11 @@ input {
 	outline: 0;
 	border: none;
 }
-
+/* Change user select style */
+::selection {
+	background-color: $text-color;
+	color: $white;
+}
 // Container class
 .container {
 	width: 100%;
@@ -56,28 +72,53 @@ input {
 	padding-left: 0.9rem;
 	margin-right: auto;
 	margin-left: auto;
-	@media (min-width: 576px) {
+	@include breakpoint-up(sm) {
 		& {
 			max-width: 540px;
 		}
 	}
-	@media (min-width: 768px) {
+	@include breakpoint-up(md) {
 		& {
 			max-width: 720px;
 		}
 	}
-	@media (min-width: 992px) {
+	@include breakpoint-up(lg) {
 		& {
 			max-width: 960px;
 		}
 	}
-	@media (min-width: 1200px) {
+	@include breakpoint-up(xl) {
 		& {
 			max-width: 1140px;
 		}
 	}
 }
-::selection {
-	background: $text-color;
-	color: $white;
+// main heading style
+.main-heading {
+	display: block;
+	max-width: 100%;
+	width: 34rem;
+	color: $text-color;
+	font-size: 2.875rem;
+	font-weight: 500;
+	text-align: start;
+	margin-bottom: 3rem;
+	@include breakpoint-down(sm) {
+		font-size: 2.25rem;
+		margin-bottom: 2rem;
+	}
+	+ p {
+		color: $text-color;
+		font-size: 0.895rem;
+		line-height: 1.8;
+		font-weight: 300;
+		max-width: 500px;
+		margin-bottom: 5rem;
+	}
+}
+.lead {
+	color: $text-color;
+	font-size: 0.895rem;
+	line-height: 1.8;
+	font-weight: 300;
 }
